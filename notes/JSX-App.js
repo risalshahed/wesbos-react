@@ -43,22 +43,6 @@ class App extends React.Component {
     })
   }
 
-  // now, let's create another secondary method
-  addToOrder = (key) => {
-    // update a state is of two steps
-    // 1. take a copy of the existing state (using spread operator)
-    const order = {...this.state.order};
-    // 2. Either add to the order or update the number in order to that order variable
-    // order.fish1 = order.fish1 + 1 || 1
-    order[key] = order[key] + 1 || 1;
-    // jodi order[key] thake, increment by 1, else print 1;
-    // set the new fishes object to state
-    this.setState({
-      // order: order,
-      order,
-    });
-  }
-
   render() {
     return(
       <>
@@ -70,12 +54,9 @@ class App extends React.Component {
               {/* loop krte hbe, maybe with map, forEach or anything, but eigula array er upor korte hy; kin2 amdr STATE is an OBJECT! */}
               {/* ei object k array te convert krbo Object.keys diye */}
               {Object.keys(this.state.fishes).map(key => (
-                <Fish
-                  key={key}
-                  index={key}
-                  details={this.state.fishes[key]}
-                  addToOrder={this.addToOrder} />
+                <Fish key={key} details={this.state.fishes[key]} />
               ))}
+              {/* ei Fish tag er vitore, key = {"anything_unique"} dte hbe, j kono kisu hoite pare BUT must be unique */}
 
             </ul>
           </div>
